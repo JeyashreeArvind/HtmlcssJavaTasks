@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML, CSS, JS Tasks- Day1(23.02.26)</title>
+<style>
+.gallery {
+    display: flex;
+    gap: 10px;
+}
+.gallery img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    padding: 10px 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.menu {
+    display: flex;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: white;
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+@media(max-width:600px){
+    .menu {
+        flex-direction: column;
+    }
+}
+.dark {
+    background: black;
+    color: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 10px;
+    text-align: center;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: #f1f1f1;
+    min-width: 120px;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+#container {
+    width: 300px;
+    background: #ddd;
+}
+
+#progress {
+    width: 0%;
+    height: 30px;
+    background: green;
+    text-align: center;
+    color: white;
+}
+.header {
+    position: sticky;
+    top: 0;
+    background: black;
+    color: white;
+    padding: 15px;
+}
+
+.content {
+    height: 1500px;
+    padding: 20px;
+}
+#topBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+}
+.accordion {
+    background: #eee;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+}
+
+.panel {
+    display: none;
+    padding: 10px;
+    background: #f9f9f9;
+}
+.pricing {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.plan {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.tab {
+    padding: 10px;
+    cursor: pointer;
+    display: inline-block;
+    background: #ddd;
+}
+.content1 {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+.active1 {
+    background: #bbb;
+}
+#strength {
+    font-weight: bold;
+}
+.star {
+    font-size: 30px;
+    cursor: pointer;
+    color: gray;
+}
+.active {
+    color: gold;
+}
+
+
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    left: -250px;      /* Hidden initially */
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    padding-top: 60px;
+    transition: 0.3s;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+.open-btn {
+    margin: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.footer {
+    background: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.icons span {
+    margin: 0 10px;
+    cursor: pointer;
+}
+.cards {
+    width: 200px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.cards:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebars {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+}
+
+.sidebars h2 {
+    margin-bottom: 20px;
+}
+
+.sidebars ul {
+    list-style: none;
+}
+
+.sidebars ul li {
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+/* Main */
+.main {
+    flex: 1;
+    background: #f4f6f9;
+}
+
+/* Navbar */
+.navbar {
+    background: white;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Cards */
+.cards1 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.card2 {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card2 h2 {
+    margin-top: 10px;
+    color: #3498db;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .cards1 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebars {
+        width: 100%;
+        text-align: center;
+    }
+
+    .cards1 {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+    <h1> Task 1: Create a login form and validate empty fields using JavaScript</h1>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Username"><br><br>
+    <input type="password" id="password" placeholder="Password"><br><br>
+    <button type="submit">Login</button>
+</form>
+
+<p id="error" style="color:red;"></p>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    if(user === "" || pass === ""){
+        document.getElementById("error").innerText = "All fields are required!";
+    } else {
+        document.getElementById("error").innerText = "Login Successful!";
+    }
+});
+</script>  
+<h1>2.Create a button that changes the background color of the page when clicked.</h1>
+<button onclick="changeColor()">Change Background</button>
+
+<script>
+function changeColor(){
+    document.body.style.backgroundColor = 
+        "#" + Math.floor(Math.random()*16777215).toString(16);
+}
+</script>
+<h1>3.Build a simple image gallery with 4 images using Flexbox.</h1>
+<div class="gallery">
+    <img src="https://picsum.photos/200/150?1">
+    <img src="https://picsum.photos/200/150?2">
+    <img src="https://picsum.photos/200/150?3">
+    <img src="https://picsum.photos/200/150?4">
+</div>
+<h1>4.Create a password field with a show/hide toggle button.</h1>
+<input type="password" id="pwd">
+<button onclick="togglePassword()">Show/Hide</button>
+
+<script>
+function togglePassword(){
+    let input = document.getElementById("pwd");
+    if(input.type === "password"){
+        input.type = "text";
+    } else {
+        input.type = "password";
+    }
+}
+</script>
+<h1>5.Build a counter app with increment and decrement buttons.</h1>
+<h2 id="count">0</h2>
+<button onclick="increment()">+</button>
+<button onclick="decrement()">-</button>
+
+<script>
+let count = 0;
+
+function increment(){
+    count++;
+    document.getElementById("count").innerText = count;
+}
+
+function decrement(){
+    count--;
+    document.getElementById("count").innerText = count;
+}
+</script>
+<h1>6.Create a responsive navbar using Flexbox.</h1>
+<div class="navbar">
+    <div>Logo</div>
+    <div class="menu">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
+</div>
+<h1>Task 7: Build a simple calculator using JS</h1>
+<input type="number" id="num1">
+<input type="number" id="num2">
+<br><br>
+
+<button onclick="calculate('+')">+</button>
+<button onclick="calculate('-')">-</button>
+<button onclick="calculate('*')">*</button>
+<button onclick="calculate('/')">/</button>
+
+<h3 id="result"></h3>
+
+<script>
+function calculate(operator){
+    let n1 = parseFloat(document.getElementById("num1").value);
+    let n2 = parseFloat(document.getElementById("num2").value);
+    let res;
+
+    if(operator === '+') res = n1 + n2;
+    if(operator === '-') res = n1 - n2;
+    if(operator === '*') res = n1 * n2;
+    if(operator === '/') res = n1 / n2;
+
+    document.getElementById("result").innerText = "Result: " + res;
+}
+</script>
+<h1>Task 8: Create a dark/light theme toggle button</h1>
+<button onclick="toggleTheme()">Toggle Theme</button>
+
+<script>
+function toggleTheme(){
+    document.body.classList.toggle("dark");
+}
+</script>
+<h1>Task 9: Create a form that shows entered data below the form after submit</h1>
+<form id="myForm">
+    <input type="text" id="name" placeholder="Enter Name">
+    <button type="submit">Submit</button>
+</form>
+
+<p id="output"></p>
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    let name = document.getElementById("name").value;
+    document.getElementById("output").innerText = "You entered: " + name;
+});
+</script>
+<h1>Task 10: Create a button that hides and shows a paragraph</h1>
+<p id="text">This is a sample paragraph.</p>
+<button onclick="toggleText()">Hide/Show</button>
+
+<script>
+function toggleText(){
+    let p = document.getElementById("text");
+    if(p.style.display === "none"){
+        p.style.display = "block";
+    } else {
+        p.style.display = "none";
+    }
+}
+</script>
+<h1>Task 11: Create a responsive card layout using CSS Grid</h1>
+<div class="grid">
+    <div class="card">Card 1</div>
+    <div class="card">Card 2</div>
+    <div class="card">Card 3</div>
+    <div class="card">Card 4</div>
+</div>
+<h1>Task 12: Build a live character counter for a textarea</h1>
+<textarea id="texts" rows="5" cols="40" maxlength="100"></textarea>
+<p>Characters: <span id="counts">0</span>/100</p>
+
+<script>
+let textarea = document.getElementById("texts");
+let counter = document.getElementById("counts");
+
+textarea.addEventListener("input", function(){
+    counter.innerText = textarea.value.length;
+});
+</script>
+<h1>Task 13: Create a dropdown menu using only CSS</h1>
+<div class="dropdown">
+    <button>Menu</button>
+    <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+    </div>
+</div>
+<h1>Task 14: Create a modal popup that opens on button click</h1>
+<button onclick="openModal()">Open Modal</button>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <p>This is a modal</p>
+        <button onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<script>
+function openModal(){
+    document.getElementById("modal").style.display = "block";
+}
+function closeModal(){
+    document.getElementById("modal").style.display = "none";
+}
+</script>
+<h1>Task 15: Build an image slider with next/previous buttons</h1>
+<img id="slider" src="https://picsum.photos/300/200?1" width="300">
+<br><br>
+<button onclick="prev()">Previous</button>
+<button onclick="next()">Next</button>
+
+<script>
+let images = [
+    "https://picsum.photos/300/200?1",
+    "https://picsum.photos/300/200?2",
+    "https://picsum.photos/300/200?3"
+];
+
+let index = 0;
+
+function showImage(){
+    document.getElementById("slider").src = images[index];
+}
+
+function next(){
+    index = (index + 1) % images.length;
+    showImage();
+}
+
+function prev(){
+    index = (index - 1 + images.length) % images.length;
+    showImage();}
+</script>
+<h1>Task 16: Create a form that validates email format using JavaScript</h1>
+<form id="emailForm">
+    <input type="text" id="email" placeholder="Enter Email">
+    <button type="submit">Submit</button>
+</form>
+
+<p id="message"></p>
+
+<script>
+document.getElementById("emailForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let email = document.getElementById("email").value;
+    let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(pattern.test(email)){
+        document.getElementById("message").innerText = "Valid Email!";
+        document.getElementById("message").style.color = "green";
+    } else {
+        document.getElementById("message").innerText = "Invalid Email!";
+        document.getElementById("message").style.color = "red";
+    }
+});
+</script>
+<h1>Task 17: Build a progress bar that increases when a button is clicked </h1>
+<div id="container">
+    <div id="progress">0%</div>
+</div>
+<br>
+<button onclick="increase()">Increase</button>
+
+<script>
+let width = 0;
+
+function increase(){
+    if(width < 100){
+        width += 10;
+        document.getElementById("progress").style.width = width + "%";
+        document.getElementById("progress").innerText = width + "%";
+    }
+}
+</script>
+<h1>Task 18: Create a sticky header using CSS</h1>
+<div class="header">Sticky Header</div>
+<div class="content">
+    Scroll down to see the sticky effect.
+</div>
+<h1>Task 19: Create a to-do list where users can add tasks</h1>
+<input type="text" id="taskInput" placeholder="Enter task">
+<button onclick="addTask()">Add</button>
+
+<ul id="taskList"></ul>
+
+<script>
+function addTask(){
+    let input = document.getElementById("taskInput");
+    let li = document.createElement("li");
+    li.innerText = input.value;
+    document.getElementById("taskList").appendChild(li);
+    input.value = "";
+}
+</script>
+<h1>Task 20: Add delete functionality to the to-do list</h1>
+<input type="text" id="taskInput1" placeholder="Enter task">
+<button onclick="addTask1()">Add</button>
+
+<ul id="taskList1"></ul>
+
+<script>
+function addTask1(){
+    let input = document.getElementById("taskInput1");
+    let li = document.createElement("li");
+    li.innerText = input.value;
+
+    let delBtn = document.createElement("button");
+    delBtn.innerText = "Delete";
+    delBtn.onclick = function(){
+        li.remove();
+    };
+
+    li.appendChild(delBtn);
+    document.getElementById("taskList1").appendChild(li);
+    input.value = "";
+}
+</script>
+<h1>Task 21: Create a search box that filters list items in real-time</h1>
+<input type="text" id="search" placeholder="Search..." onkeyup="filterList()">
+
+<ul id="list">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Mango</li>
+    <li>Orange</li>
+</ul>
+
+<script>
+function filterList(){
+    let input = document.getElementById("search").value.toLowerCase();
+    let items = document.querySelectorAll("#list li");
+
+    items.forEach(function(item){
+        if(item.innerText.toLowerCase().includes(input)){
+            item.style.display = "list-item";
+        } else {
+            item.style.display = "none";
+        }
+    });
+}
+</script>
+<h1>Task 22: Build a digital clock using JavaScript</h1>
+
+<h2 id="clock"></h2>
+
+<script>
+function updateClock(){
+    let now = new Date();
+    document.getElementById("clock").innerText = now.toLocaleTimeString();
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+<h1>Task 23: Create a typing effect animation</h1>
+
+<h2 id="typing"></h2>
+
+<script>
+let text = "Welcome to JavaScript Typing Effect!";
+let indexs = 0;
+
+function typeEffect(){
+    if(indexs < text.length){
+        document.getElementById("typing").innerText += text.charAt(indexs);
+        indexs++;
+        setTimeout(typeEffect, 100);
+    }
+}
+
+typeEffect();
+</script>
+<h1>Task 24: Build an accordion using JavaScript</h1>
+
+<button class="accordion" onclick="togglePanel(this)">What is HTML?</button>
+<div class="panel">HTML is the standard language used to create web pages. HTML structures the content on the internet.</div>
+
+<button class="accordion" onclick="togglePanel(this)">What is JavaScript?</button>
+<div class="panel">JavaScript is a high-level, interpreted programming language mainly used to make web pages interactive.</div>
+
+<script>
+function togglePanel(button){
+    let panel = button.nextElementSibling;
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+}
+</script>
+<h1>Task 25: Create a scroll-to-top button</h1>
+<button id="topBtn" onclick="scrollTopPage()">Top</button>
+
+<script>
+let btn = document.getElementById("topBtn");
+
+window.onscroll = function(){
+    btn.style.display = window.scrollY > 200 ? "block" : "none";
+};
+
+function scrollTopPage(){
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+</script>
+<h1>Task 26: Build a rating system (1–5 stars)</h1>
+<div id="stars">
+    <span class="star" onclick="rate(1)">★</span>
+    <span class="star" onclick="rate(2)">★</span>
+    <span class="star" onclick="rate(3)">★</span>
+    <span class="star" onclick="rate(4)">★</span>
+    <span class="star" onclick="rate(5)">★</span>
+</div>
+
+<script>
+function rate(num){
+    let stars = document.querySelectorAll(".star");
+    stars.forEach((star, index) => {
+        star.classList.toggle("active", index < num);
+    });
+}
+</script>
+<h1>Task 27: Create a form with real-time password strength indicator</h1>
+<input type="password" id="passwords" placeholder="Enter password">
+<p id="strengths"></p>
+
+<script>
+document.getElementById("passwords").addEventListener("input", function(){
+    let val = this.value;
+    let strength = document.getElementById("strengths");
+
+    if(val.length < 4){
+        strength.innerText = "Weak";
+        strength.style.color = "red";
+    } else if(val.length < 8){
+        strength.innerText = "Medium";
+        strength.style.color = "orange";
+    } else {
+        strength.innerText = "Strong";
+        strength.style.color = "green";
+    }
+});
+</script>
+<h1>Task 28: Create tabs (tab switching content)</h1>
+<div>
+    <span class="tab" onclick="openTab(0)">Tab 1</span>
+    <span class="tab" onclick="openTab(1)">Tab 2</span>
+</div>
+
+<div class="content1">HTML is the standard language used to create web pages. HTML structures the content on the internet.</div>
+<div class="content1">JavaScript is a high-level, interpreted programming language mainly used to make web pages interactive.</div>
+
+<script>
+function openTab(index){
+    let contents = document.querySelectorAll(".content1");
+    let tabs = document.querySelectorAll(".tab");
+
+    contents.forEach(c => c.style.display = "none");
+    tabs.forEach(t => t.classList.remove("active1"));
+
+    contents[index].style.display = "block";
+    tabs[index].classList.add("active1");
+}
+
+openTab(0);
+</script>
+<h1>Task 29: Build a responsive pricing table</h1>
+<div class="pricing">
+    <div class="plan">
+        <h3>Basic</h3>
+        <p>$10/month</p>
+    </div>
+    <div class="plan">
+        <h3>Standard</h3>
+        <p>$20/month</p>
+    </div>
+    <div class="plan">
+        <h3>Premium</h3>
+        <p>$30/month</p>
+    </div>
+</div>
+<h1>Task 30: Create an image preview before file upload</h1>
+<input type="file" accept="image/*" onchange="previewImage(event)">
+<br><br>
+<img id="preview" width="200">
+
+<script>
+function previewImage(event){
+    let reader = new FileReader();
+    reader.onload = function(){
+        document.getElementById("preview").src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+<h1>Task 31: Build a BMI calculator with result display</h1>
+<h3>BMI Calculator</h3>
+
+<input type="number" id="weight" placeholder="Weight (kg)">
+<input type="number" id="height" placeholder="Height (m)">
+<button onclick="calculateBMI()">Calculate</button>
+
+<p id="result1"></p>
+
+<script>
+function calculateBMI(){
+    let w = parseFloat(document.getElementById("weight").value);
+    let h = parseFloat(document.getElementById("height").value);
+
+    let bmi = (w / (h * h)).toFixed(2);
+    document.getElementById("result1").innerText = "Your BMI: " + bmi;
+}
+</script>
+<h1>Task 32: Create a countdown timer</h1>
+<h2 id="countdowns">10</h2>
+<button onclick="startTimer()">Start</button>
+
+<script>
+let time = 10;
+let interval;
+
+function startTimer(){
+    clearInterval(interval);
+    time = 10;
+    interval = setInterval(function(){
+        document.getElementById("countdowns").innerText = time;
+        time--;
+        if(time < 0){
+            clearInterval(interval);
+            document.getElementById("countdowns").innerText = "Time's up!";
+        }
+    }, 1000);
+}
+</script>
+
+<h1>Task 33: Build a sidebar that opens and closes</h1>
+      <button class="open-btn" onclick="openSidebar()">☰ Open Sidebar</button>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="closeSidebar()">✖</button>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <script>function openSidebar() {
+    document.getElementById("sidebar").style.left = "0";
+}
+
+function closeSidebar() {
+    document.getElementById("sidebar").style.left = "-250px";
+}</script>
+<h1>Task 34: Create a dynamic table where rows can be added</h1>
+<input type="text" id="names" placeholder="Name">
+<button onclick="addRow()">Add</button>
+
+<table border="1" id="table">
+    <tr>
+        <th>Name</th>
+    </tr>
+</table>
+
+<script>
+function addRow(){
+    let table = document.getElementById("table");
+    let row = table.insertRow();
+    let cell = row.insertCell(0);
+    cell.innerText = document.getElementById("names").value;
+}
+</script>
+<h1>Task 35: Create a form that stores data in localStorage</h1>
+<input type="text" id="usernames" placeholder="Enter Name">
+<button onclick="saveData()">Save</button>
+
+<p id="output"></p>
+
+<script>
+function saveData(){
+    let name = document.getElementById("usernames").value;
+    localStorage.setItem("usernames", name);
+    document.getElementById("output").innerText = "Saved: " + name;
+}
+
+window.onload = function(){
+    let saved = localStorage.getItem("usernames");
+    if(saved){
+        document.getElementById("output").innerText = "Stored Name: " + saved;
+    }
+}
+</script>
+<h1>Task 36: Build a simple quiz app with score calculation</h1>
+<h3>Simple Quiz</h3>
+
+<p>1. What is 2 + 2?</p>
+<input type="radio" name="q1" value="3"> 3<br>
+<input type="radio" name="q1" value="4"> 4<br>
+<input type="radio" name="q1" value="5"> 5<br><br>
+
+<button onclick="checkAnswers()">Submit</button>
+
+<p id="score"></p>
+
+<script>
+function checkAnswers(){
+    let answer = document.querySelector('input[name="q1"]:checked');
+    let score = 0;
+
+    if(answer && answer.value === "4"){
+        score++;
+    }
+
+    document.getElementById("score").innerText = "Your Score: " + score;
+}
+</script>
+<h1>Task 37: Create a product card with hover animation</h1>
+
+<div class="cards">
+    <h3>Product</h3>
+    <p>$20</p>
+</div>
+<h1>Task 38: Build a responsive footer with social icons</h1>
+<div class="footer">
+    <p>© 2026 My Website</p>
+    <div class="icons">
+        <span>🌐</span>
+        <span>📘</span>
+        <span>📸</span>
+    </div>
+</div>
+<h1>Task 39: Create a theme switcher with multiple colors</h1>
+
+<button onclick="setTheme('lightblue')">Blue</button>
+<button onclick="setTheme('lightgreen')">Green</button>
+<button onclick="setTheme('lightcoral')">Coral</button>
+
+<script>
+function setTheme(color){
+    document.body.style.backgroundColor = color;
+}
+</script>
+<h1>Task 40: Build a live search suggestion box</h1>
+<input type="text" id="searchBoxs" onkeyup="showSuggestions()" placeholder="Search...">
+<ul id="suggestions1"></ul>
+
+<script>
+let data = ["Apple", "Banana", "Mango", "Orange", "Grapes"];
+
+function showSuggestions(){
+    let input = document.getElementById("searchBoxs").value.toLowerCase();
+    let list = document.getElementById("suggestions1");
+    list.innerHTML = "";
+
+    data.forEach(function(item){
+        if(item.toLowerCase().includes(input) && input !== ""){
+            let li = document.createElement("li");
+            li.innerText = item;
+            list.appendChild(li);
+        }
+    });
+}
+</script>
+<h1>Task 41: Build a mini e-commerce product page with add-to-cart count</h1>
+<h3>Product - $20</h3>
+<button onclick="addToCart1()">Add to Cart</button>
+<p>Cart Count: <span id="cartCount">0</span></p>
+
+<script>
+let count1 = 0;
+function addToCart1(){
+    count1++;
+    document.getElementById("cartCount").innerText = count1;
+}
+</script>
+<h1>Task 42: Create a multi-step registration form</h1>
+<div id="step1">
+    <h3>Step 1</h3>
+    <input type="text" id="name1" placeholder="Name">
+    <button onclick="nextStep()">Next</button>
+</div>
+
+<div id="step2" style="display:none;">
+    <h3>Step 2</h3>
+    <input type="email" id="mail" placeholder="Email">
+    <button onclick="prevStep()">Back</button>
+    <button type="submit" onclick="formsubmit()">Submit</button>
+</div>
+
+<script>
+const name1=document.getElementById("name1");
+const mail=document.getElementById("mail");
+function nextStep(){
+    document.getElementById("step1").style.display = "none";
+    document.getElementById("step2").style.display = "block";
+}
+function prevStep(){
+    document.getElementById("step1").style.display = "block";
+    document.getElementById("step2").style.display = "none";
+}
+function formsubmit(){
+    if(name1.value==="" || mail.value===""){
+    alert("Please fill all the fields")
+    }
+    else{
+    alert("Form Submitted!");
+    }
+}
+</script>
+<h1> Task 43: Build a drag-and-drop box</h1>
+<div id="box" draggable="true" 
+     style="width:100px;height:100px;background:red;"
+     ondragstart="drag(event)">
+</div>
+
+<div ondrop="drop(event)" ondragover="allowDrop(event)"
+     style="width:200px;height:200px;border:2px dashed black;margin-top:20px;">
+</div>
+
+<script>
+function allowDrop(e){ e.preventDefault(); }
+function drag(e){ e.dataTransfer.setData("text", e.target.id); }
+function drop(e){
+    e.preventDefault();
+    e.target.appendChild(document.getElementById("box"));
+}
+</script>
+<h1>Task 44: Create a notes app with edit and delete functionality</h1>
+<input type="text" id="noteInput" placeholder="Enter note">
+<button onclick="addNote()">Add</button>
+
+<ul id="notes"></ul>
+
+<script>
+function addNote(){
+    let text = document.getElementById("noteInput").value;
+    let li = document.createElement("li");
+    li.innerText = text;
+
+    li.onclick = function(){
+        let updated = prompt("Edit note:", text);
+        if(updated) li.innerText = updated;
+    };
+
+    let del = document.createElement("button");
+    del.innerText = "Delete";
+    del.onclick = function(){ li.remove(); };
+
+    li.appendChild(del);
+    document.getElementById("notes").appendChild(li);
+}
+</script>
+<h1>Task 45: Build a stopwatch with start, pause, reset</h1>
+<h2 id="time">0</h2>
+<button onclick="start()">Start</button>
+<button onclick="pause1()">Pause</button>
+<button onclick="reset()">Reset</button>
+
+<script>
+let timer;
+let seconds = 0;
+
+function start(){
+    timer = setInterval(()=>{
+        seconds++;
+        document.getElementById("time").innerText = seconds;
+    },1000);
+}
+
+function pause1(){ clearInterval(timer); }
+
+function reset(){
+    clearInterval(timer);
+    seconds = 0;
+    document.getElementById("time").innerText = 0;
+}
+</script>
+<h1>Task 46: Create a filterable image gallery using buttons</h1>
+<button onclick="filter('all')">All</button>
+<button onclick="filter('nature')">Nature</button>
+<button onclick="filter('city')">City</button>
+
+<div>
+    <img src="https://picsum.photos/100?1" class="nature">
+    <img src="https://picsum.photos/100?2" class="city">
+    <img src="https://picsum.photos/100?3" class="nature">
+</div>
+
+<script>
+function filter(category){
+    let imgs = document.querySelectorAll("img");
+    imgs.forEach(img=>{
+        img.style.display = (category === 'all' || img.classList.contains(category)) 
+        ? "inline" : "none";
+    });
+}
+</script>
+<h1>Task 47: Build a collapsible FAQ section</h1>
+<button onclick="toggleFAQ(this)">What is HTML?</button>
+<p style="display:none;">HTML is a markup language.</p>
+
+<script>
+function toggleFAQ(btn){
+    let p = btn.nextElementSibling;
+    p.style.display = p.style.display === "none" ? "block" : "none";
+}
+</script>
+<h1>Task 48: Create a responsive dashboard layout</h1>
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebars">
+        <h2>Dashboard</h2>
+        <ul>
+            <li>Home</li>
+            <li>Analytics</li>
+            <li>Users</li>
+            <li>Settings</li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main">
+
+        <!-- Navbar -->
+        <header class="navbar">
+            <h3>Welcome Admin</h3>
+        </header>
+
+        <!-- Cards -->
+        <section class="cards1">
+            <div class="card2">Total Users <h2>1200</h2></div>
+            <div class="card2">Revenue <h2>$8,500</h2></div>
+            <div class="card2">Orders <h2>320</h2></div>
+            <div class="card2">Feedback <h2>85</h2></div>
+              </section>
+
+    </div>
+
+</div>
+<h1>Task 49: Build a form that prevents submit if validation fails</h1>
+<form onsubmit="return validate()">
+    <input type="text" id="name2" placeholder="Enter Name">
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+function validate(){
+    let name = document.getElementById("name2").value;
+    if(name === ""){
+        alert("Name is required!");
+        return false;
+    }
+    return true;
+}
+</script>
+<h1>Task 50: Create a dynamic pagination system for a list</h1>
+<ul id="data1"></ul>
+<button onclick="prev()">Prev</button>
+<button onclick="next()">Next</button>
+
+<script>
+let items = Array.from({length:20}, (_,i)=>"Item "+(i+1));
+let page = 0;
+let perPage = 5;
+
+function render(){
+    let list = document.getElementById("data1");
+    list.innerHTML = "";
+    let start = page * perPage;
+    let end = start + perPage;
+    items.slice(start,end).forEach(item=>{
+        let li = document.createElement("li");
+        li.innerText = item;
+        list.appendChild(li);
+    });
+}
+function next(){
+    if((page+1)*perPage < items.length){
+        page++;
+        render();
+    }
+}
+
+function prev(){
+    if(page>0){
+        page--;
+        render();
+    }
+}
+
+render();
+</script>
+
+</body>
+</html>
