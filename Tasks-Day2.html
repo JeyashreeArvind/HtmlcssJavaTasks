@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html, CSS and Javascript Tasks- Day2(24.02.26)</title>
+    <style>
+        /* 1. Fully Functional Kanban Board */
+
+
+.board {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.column {
+    background: white;
+    width: 30%;
+    padding: 15px;
+    border-radius: 8px;
+    min-height: 300px;
+}
+
+.task {
+    background: #e3e3e3;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: grab;
+}
+.product, .cart-item{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 400px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        button{
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .cart{
+            margin-top: 30px;
+        }
+
+        .total{
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+
+        th:hover {
+            background-color: #ddd;
+        }
+
+        .arrow {
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        body.light { background: white; color: black; }
+body.dark { background: black; color: white; }
+.comment { margin: 10px 0; }
+.reply { margin-left: 20px; }
+.sidebar {
+  width: 200px;
+  background: #222;
+  color: white;
+  padding: 10px;
+}
+.sidebar div {
+  padding: 8px;
+  cursor: pointer;
+}
+.sidebar div:hover {
+  background: #444;
+}
+.dropdown { position: relative; width: 200px; }
+.selected {
+  padding: 10px;
+  background: #eee;
+  cursor: pointer;
+}
+.options {
+  display: none;
+  position: absolute;
+  background: white;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+.options div {
+  padding: 8px;
+  cursor: pointer;
+}
+.options div:hover {
+  background: #ddd;
+}
+.chatToggle25 {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: blue;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+.chatWindow25 {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  width: 250px;
+  height: 300px;
+  background: white;
+  border: 1px solid #ccc;
+  display: none;
+  padding: 10px;
+}
+.skillWrapper24 { margin: 50px 0; }
+.progressContainer24 {
+  width: 100%;
+  background: #ddd;
+}
+.progressFill24 {
+  width: 0%;
+  height: 20px;
+  background: blue;
+  transition: width 2s;
+}
+.parallaxSection23 {
+  height: 400px;
+  background-image: url("https://picsum.photos/800/600");
+  background-attachment: fixed;
+  background-size: cover;
+}
+.normalBlock23 { height: 400px; background: white; }
+.progressBar22 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background: green;
+  width: 0%;
+}
+.contentArea22 { height: 2000px; }
+.carouselBox21 { width: 300px; overflow: hidden; position: relative; }
+.slideTrack21 { display: flex; transition: transform 0.5s ease; }
+.slideItem21 { min-width: 300px; }
+.navBtn21 { position: absolute; top: 40%; background: black; color: white; }
+.prevBtn21 { left: 5px; }
+.nextBtn21 { right: 5px; }
+.pageSection30 {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.activePage30 {
+  display: block;
+  opacity: 1;
+}
+.accordionHeader29 {
+  background: #333;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+.accordionBody29 {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  background: #f4f4f4;
+  padding: 0 10px;
+}
+.tooltipTrigger28 { position: relative; cursor: pointer; }
+.tooltipBox28 {
+  position: absolute;
+  background: black;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+  display: none;
+  top: 25px;
+}
+.modalLayer27 {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+.modalContent27 {
+  background: white;
+  padding: 20px;
+  margin: 100px auto;
+  width: 200px;
+}
+.typeBox26 { font-size: 24px; font-weight: bold; }
+.cursorBlink26 { display: inline-block; width: 2px; background: black; animation: blink26 1s infinite; }
+@keyframes blink26 { 50% { opacity: 0; } }
+.calendarGrid35 {
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+  gap: 5px;
+}
+.calendarCell35 {
+  padding: 10px;
+  background: #f0f0f0;
+  text-align: center;
+  cursor: pointer;
+}
+.calendarActive35 {
+  background: lightblue;
+}
+.seatGrid34 { display: grid; grid-template-columns: repeat(5, 40px); gap: 5px; }
+.seatItem34 {
+  width: 40px;
+  height: 40px;
+  background: #ccc;
+  cursor: pointer;
+}
+.seatSelected34 { background: orange; }
+.voteContainer32 { width: 300px; }
+.voteBar32 { height: 20px; background: green; margin: 5px 0; }
+.weatherCard31 { width: 250px; padding: 20px; background: #e3f2fd; border-radius: 10px; }
+.weatherTemp31 { font-size: 28px; font-weight: bold; }
+.weatherCity31 { font-size: 18px; }
+.stepWrapper40 { display: flex; gap: 10px; margin-bottom: 15px; }
+.stepCircle40 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ccc;
+  text-align: center;
+  line-height: 30px;
+}
+.stepActive40 { background: green; color: white; }
+.formSection40 { display: none; }
+.dropZone37 {
+  width: 300px;
+  height: 150px;
+  border: 2px dashed #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.previewArea37 img { width: 100px; margin: 5px; }
+.invoiceWrapper36 { width: 300px; padding: 15px; border: 1px solid #ccc; }
+.invoiceRow36 { margin: 5px 0; }
+.invoiceSummary36 { font-weight: bold; margin-top: 10px; }
+
+.pollWrapV { padding:20px; max-width:300px; }
+.barV { height:20px; background:green; margin:5px 0; }
+#progressbar {
+  margin-bottom: 30px;
+  overflow: hidden;
+  counter-reset: step; /* Used for numbering */
+}
+
+#progressbar li {
+  list-style-type: none;
+  width: 33.33%; /* Depends on number of steps */
+  float: left;
+  position: relative;
+  text-align: center;
+}
+
+/* Circles */
+#progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  background: #ddd;
+  border-radius: 50%;
+  margin: 0 auto 10px auto;
+}
+
+/* Connectors */
+#progressbar li:after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #ddd;
+  position: absolute;
+  left: -50%;
+  top: 20px;
+  z-index: -1;
+}
+.tabGroupT { display:flex; gap:10px; cursor:pointer; }
+.tabPanelT { display:none; padding:15px; background:#eee; margin-top:10px; }
+.tabPanelT.activeT { display:block; }
+#progressbar li:first-child:after { content: none; }
+.chatShellC { max-width:400px; border:1px solid #ccc; padding:10px; }
+.chatBoxC { height:200px; overflow-y:auto; border:1px solid #ddd; padding:5px; margin-bottom:10px; }
+.msgC { margin:5px 0; }
+/* Active State */
+#progressbar li.active:before,
+#progressbar li.active:after {
+  background: #2F8D46;
+  color: white;
+}
+.boardWrapX { display:flex; gap:20px; padding:20px; }
+.panelX { background:#f4f4f4; padding:15px; width:30%; border-radius:10px; }
+.cardX { background:white; padding:8px; margin:6px 0; border-radius:6px; }
+.ctrlBtnX { margin-left:5px; cursor:pointer; color:red; }
+.layoutZ { display:flex; height:100vh; }
+.menuZ { width:220px; background:#222; color:white; padding:20px; transition:.3s; }
+.menuZ.hideZ { width:60px; }
+.mainZ { flex:1; padding:20px; }
+.triggerZ { cursor:pointer; margin-bottom:15px; }
+.toastZoneY { position:fixed; top:20px; right:20px; }
+.noticeY { background:#333; color:white; padding:10px; margin-top:10px; border-radius:5px; }
+.blogWrapQ { padding:20px; }
+.articleQ { background:#f5f5f5; margin:8px 0; padding:10px; border-radius:6px; }
+.calcWrapM { padding:20px; max-width:300px; }
+.portWrapP { font-family:Arial; }
+.navBarP { display:flex; gap:15px; background:#222; color:white; padding:10px; cursor:pointer; }
+.sectionP { display:none; padding:20px; }
+.sectionP.showP { display:block; }
+/* Navbar */
+header {
+  position: fixed;
+  width: 100%;
+  background: #111;
+  padding: 15px 0;
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.logo {
+  color: white;
+}
+
+/* Sections */
+.section {
+  min-height: 100vh;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.home {
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+}
+
+.highlight {
+  color: yellow;
+}
+
+/* Skills */
+.skill {
+  width: 60%;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.progress {
+  width: 100%;
+  background: #ddd;
+  height: 10px;
+}
+
+.progress-bar {
+  width: 0;
+  height: 10px;
+  background: #764ba2;
+  transition: width 1s;
+}
+
+/* Projects */
+.project-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.project-card {
+  background: #f4f4f4;
+  padding: 20px;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  background: #ddd;
+}
+
+/* Contact */
+form {
+  width: 300px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+input, textarea {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer;
+}
+    </style>
+</head>
+<body>
+<h1>1.Build a fully functional Kanban board (drag tasks between columns)</h1>
+ <h2>My Kanban Board</h2>
+
+<div class="board">
+
+    <div class="column" id="todo">
+        <h3>To Do</h3>
+        <button onclick="addTask('todo')">+ Add Task</button>
+        <div class="task-list"></div>
+    </div>
+
+    <div class="column" id="progress">
+        <h3>In Progress</h3>
+        <div class="task-list"></div>
+    </div>
+
+    <div class="column" id="done">
+        <h3>Done</h3>
+        <div class="task-list"></div>
+    </div>
+
+</div>
+
+<script>
+    function addTask(columnId) {
+    let taskText = prompt("Enter task name:");
+    if (!taskText) return;
+
+    let task = document.createElement("div");
+    task.className = "task";
+    task.draggable = true;
+    task.innerText = taskText;
+
+    task.addEventListener("dragstart", dragStart);
+
+    document.querySelector(`#${columnId} .task-list`).appendChild(task);
+}
+
+function dragStart(e) {
+    e.dataTransfer.setData("text", e.target.innerText);
+    e.dataTransfer.setData("id", e.target.id);
+    draggedItem = e.target;
+}
+
+let draggedItem = null;
+
+document.querySelectorAll(".column").forEach(column => {
+    column.addEventListener("dragover", e => e.preventDefault());
+
+    column.addEventListener("drop", function () {
+        if (draggedItem) {
+            this.querySelector(".task-list").appendChild(draggedItem);
+        }
+    });
+});
+</script>
+<h1>2 TASK: Dynamic Form Builder</h1>
+<h2>Dynamic Form Builder</h2>
+<form id="form"></form>
+<button onclick="addField()">Add Field</button>
+
+<script>
+/* 2. Dynamic Form Builder */
+
+function addField() {
+  const input = document.createElement("input");
+  input.type = "text";
+  input.placeholder = "New Field";
+  document.getElementById("form").appendChild(input);
+}
+
+</script>
+<h1>3 TASK: Shopping Cart System</h1>
+
+<h2>Products</h2>
+
+<div class="product">
+    <span>Shirt - ₹500</span>
+    <button onclick="addToCart('Shirt', 500)">Add</button>
+</div>
+
+<div class="product">
+    <span>Shoes - ₹1200</span>
+    <button onclick="addToCart('Shoes', 1200)">Add</button>
+</div>
+
+<div class="product">
+    <span>Watch - ₹800</span>
+    <button onclick="addToCart('Watch', 800)">Add</button>
+</div>
+
+<div class="cart">
+    <h2>Cart</h2>
+    <div id="cartItems"></div>
+    <div class="total">Total: ₹<span id="total">0</span></div>
+</div>
+<script>
+     let cart = [];
+
+    function addToCart(name, price){
+        let existing = cart.find(item => item.name === name);
+
+        if(existing){
+            existing.quantity++;
+        } else {
+            cart.push({name, price, quantity: 1});
+        }
+
+        displayCart();
+    }
+
+    function changeQuantity(name, change){
+        let item = cart.find(item => item.name === name);
+        item.quantity += change;
+
+        if(item.quantity <= 0){
+            cart = cart.filter(item => item.name !== name);
+        }
+
+        displayCart();
+    }
+     function displayCart(){
+        let cartItems = document.getElementById("cartItems");
+        let total = 0;
+        cartItems.innerHTML = "";
+
+        cart.forEach(item => {
+            total += item.price * item.quantity;
+
+            cartItems.innerHTML += `
+                <div class="cart-item">
+                    <span>${item.name} - ₹${item.price}</span>
+                    <div>
+                        <button onclick="changeQuantity('${item.name}', -1)">-</button>
+                        ${item.quantity}
+                        <button onclick="changeQuantity('${item.name}', 1)">+</button>
+                    </div>
+                    <button onclick="changeQuantity('${item.name}', -${item.quantity})">Remove</button>
+                </div>
+            `;
+        });
+
+        document.getElementById("total").innerText = total;
+    }
+</script>
+<h1>4.TASK: Sortable Table</h1>
+<h2>Sortable Table</h2>
+
+<table id="myTable">
+    <thead>
+        <tr>
+            <th onclick="sortTable(0)">Name <span class="arrow"></span></th>
+            <th onclick="sortTable(1)">Age <span class="arrow"></span></th>
+            <th onclick="sortTable(2)">City <span class="arrow"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Anita</td>
+            <td>25</td>
+            <td>Chennai</td>
+        </tr>
+        <tr>
+            <td>Rahul</td>
+            <td>30</td>
+            <td>Bangalore</td>
+        </tr>
+        <tr>
+            <td>Sneha</td>
+            <td>22</td>
+            <td>Mumbai</td>
+        </tr>
+        <tr>
+            <td>Arjun</td>
+            <td>28</td>
+            <td>Delhi</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    let sortDirection = true; // true = ascending, false = descending
+
+    function sortTable(columnIndex) {
+        const table = document.getElementById("myTable");
+        const tbody = table.querySelector("tbody");
+        const rows = Array.from(tbody.querySelectorAll("tr"));
+        const headers = table.querySelectorAll("th");
+
+        // Clear all arrows
+        headers.forEach(th => th.querySelector(".arrow").textContent = "");
+
+        rows.sort((a, b) => {
+            let cellA = a.children[columnIndex].textContent.trim();
+            let cellB = b.children[columnIndex].textContent.trim();
+
+            // Check if numeric
+            if (!isNaN(cellA) && !isNaN(cellB)) {
+                cellA = Number(cellA);
+                cellB = Number(cellB);
+                 }
+
+            if (cellA > cellB) return sortDirection ? 1 : -1;
+            if (cellA < cellB) return sortDirection ? -1 : 1;
+            return 0;
+        });
+
+        // Toggle direction
+        sortDirection = !sortDirection;
+
+        // Add sorted rows back
+        rows.forEach(row => tbody.appendChild(row));
+
+        // Show arrow
+        headers[columnIndex].querySelector(".arrow").textContent =
+            sortDirection ? "↓" : "↑";
+    }
+</script>
+<h1>5.TASK: Multi-Theme Dashboard (localStorage)</h1>
+<h2>Theme Switcher</h2>
+
+<button onclick="setTheme('light')">Light</button>
+<button onclick="setTheme('dark')">Dark</button>
+
+<script>
+/* 5. Multi-Theme Dashboard */
+
+function setTheme(theme) {
+  document.body.className = theme;
+  localStorage.setItem("theme", theme);
+}
+
+window.onload = function() {
+  const saved = localStorage.getItem("theme");
+  if(saved) document.body.className = saved;
+}
+</script>
+<h1>6.TASK: Dynamic Sidebar Menu (From JS Array)</h1>
+<div class="sidebar" id="sidebar"></div>
+
+<script>
+/* 6. Dynamic Sidebar Menu */
+
+const menuItems = ["Dashboard", "Profile", "Settings", "Logout"];
+
+const sidebar = document.getElementById("sidebar");
+
+menuItems.forEach(item => {
+  const div = document.createElement("div");
+  div.textContent = item;
+  sidebar.appendChild(div);
+});
+</script>
+<h1>7.TASK: Comment System with Nested Replies</h1>
+<input type="text" id="commentInput" placeholder="Write comment">
+<button onclick="addComment()">Post</button>
+
+<div id="comments"></div>
+
+<script>
+/* 7. Comment System with Nested Replies */
+
+function addComment() {
+  const text = document.getElementById("commentInput").value;
+  const div = document.createElement("div");
+  div.className = "comment";
+  div.innerHTML = text + 
+    ' <button onclick="addReply(this)">Reply</button>';
+  document.getElementById("comments").appendChild(div);
+}
+
+function addReply(btn) {
+  const replyText = prompt("Enter reply:");
+  const replyDiv = document.createElement("div");
+  replyDiv.className = "reply";
+  replyDiv.textContent = replyText;
+  btn.parentElement.appendChild(replyDiv);
+}
+</script>
+<h1>8.TASK: Custom Dropdown</h1>
+    <div class="dropdown">
+  <div class="selected" onclick="toggle()">Select Course</div>
+  <div class="options" id="options">
+    <div onclick="selectOption(this)">HTML</div>
+    <div onclick="selectOption(this)">CSS</div>
+    <div onclick="selectOption(this)">JavaScript</div>
+  </div>
+</div>
+
+<script>
+/* 8. Custom Dropdown Component */
+
+function toggle() {
+  const options = document.getElementById("options");
+  options.style.display = 
+    options.style.display === "block" ? "none" : "block";
+}
+
+function selectOption(el) {
+  document.querySelector(".selected").textContent = el.textContent;
+  document.getElementById("options").style.display = "none";
+}
+</script>
+<h1>9.TASK: Live Markdown Previewer</h1>
+<textarea id="markdown" rows="6" cols="40"
+oninput="preview()"></textarea>
+
+<div id="output" style="border:1px solid #ccc; padding:10px;"></div>
+
+<script>
+/* 9. Live Markdown Previewer */
+
+function preview() {
+  let text = document.getElementById("markdown").value;
+
+  text = text.replace(/^# (.*$)/gim, "<h1>$1</h1>");
+  text = text.replace(/^## (.*$)/gim, "<h2>$1</h2>");
+  text = text.replace(/\*\*(.*)\*\*/gim, "<b>$1</b>");
+  text = text.replace(/\*(.*)\*/gim, "<i>$1</i>");
+
+  document.getElementById("output").innerHTML = text;
+}
+</script>
+<h1>10.TASK: Dynamic Breadcrumb Generator</h1>
+<div id="breadcrumb"></div>
+
+<button onclick="navigate('Home')">Home</button>
+<button onclick="navigate('Products')">Products</button>
+<button onclick="navigate('Details')">Details</button>
+
+<script>
+/* 10. Dynamic Breadcrumb Generator */
+
+let path = [];
+
+function navigate(page) {
+  path.push(page);
+  renderBreadcrumb();
+}
+
+function renderBreadcrumb() {
+  const container = document.getElementById("breadcrumb");
+  container.innerHTML = path.join(" > ");
+}
+</script>
+<h1>11.TASK: Notes App (localStorage + Search + Filter)</h1>
+<input type="text" id="noteInput" placeholder="Write note">
+<button onclick="addNote()">Add</button>
+
+<input type="text" id="search" placeholder="Search" oninput="renderNotes()">
+
+<div id="notes"></div>
+
+<script>
+/* 11. Notes App */
+
+let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+function addNote() {
+  const text = document.getElementById("noteInput").value;
+  if (!text) return;
+  notes.push(text);
+  localStorage.setItem("notes", JSON.stringify(notes));
+  document.getElementById("noteInput").value = "";
+  renderNotes();
+}
+function renderNotes() {
+  const container = document.getElementById("notes");
+  const search = document.getElementById("search").value.toLowerCase();
+  container.innerHTML = "";
+
+  notes
+    .filter(note => note.toLowerCase().includes(search))
+    .forEach((note, index) => {
+      container.innerHTML += `
+        <div class="note">
+          ${note}
+          <button onclick="deleteNote(${index})">Delete</button>
+        </div>`;
+    });
+}
+
+function deleteNote(index) {
+  notes.splice(index, 1);
+  localStorage.setItem("notes", JSON.stringify(notes));
+  renderNotes();
+}
+
+renderNotes();
+</script>
+<h1>12.TASK: Expense Tracker (Category-wise Summary)</h1>
+<h2>Expense Tracker</h2>
+
+<input type="text" id="desc" placeholder="Description">
+<input type="number" id="amount" placeholder="Amount">
+<select id="category">
+  <option>Food</option>
+  <option>Travel</option>
+  <option>Shopping</option>
+</select>
+<button onclick="addExpense()">Add</button>
+
+<h3>Total: ₹<span id="total1">0</span></h3>
+<div id="summary"></div>
+
+<script>
+/* 12. Expense Tracker */
+
+let expenses = [];
+
+function addExpense() {
+  const desc = descInput.value;
+  const amount = parseFloat(amountInput.value);
+  const category = categoryInput.value;
+
+  expenses.push({ desc, amount, category });
+  render();
+}
+const descInput = document.getElementById("desc");
+const amountInput = document.getElementById("amount");
+const categoryInput = document.getElementById("category");
+
+function render() {
+  let total1 = 0;
+  let summary = {};
+
+  expenses.forEach(exp => {
+    total1 += exp.amount;
+    summary[exp.category] = (summary[exp.category] || 0) + exp.amount;
+  });
+
+  document.getElementById("total1").innerText = total1;
+
+  let html = "<h4>Category Summary</h4>";
+  for (let cat in summary) {
+    html += `${cat}: ₹${summary[cat]} <br>`;
+  }
+
+  document.getElementById("summary").innerHTML = html;
+}
+</script>
+<h1>13.TASK: Student Result Calculator</h1>
+<h2>Student Result Calculator</h2>
+
+<input type="number" id="m1" placeholder="Subject 1">
+<input type="number" id="m2" placeholder="Subject 2">
+<input type="number" id="m3" placeholder="Subject 3">
+<button onclick="calculate()">Calculate</button>
+
+<h3 id="result"></h3>
+
+<script>
+/* 13. Student Result Calculator */
+
+function calculate() {
+  let m1 = +document.getElementById("m1").value;
+  let m2 = +document.getElementById("m2").value;
+  let m3 = +document.getElementById("m3").value;
+
+  let total = m1 + m2 + m3;
+  let avg = total / 3;
+
+  let grade = "";
+  if (avg >= 90) grade = "A";
+  else if (avg >= 75) grade = "B";
+  else if (avg >= 50) grade = "C";
+  else grade = "Fail";
+   document.getElementById("result").innerText =
+    `Total: ${total}, Average: ${avg.toFixed(2)}, Grade: ${grade}`;
+}
+</script>
+<h1>14.TASK: Contact Manager (CRUD + Search)</h1>
+<h2>Contact Manager</h2>
+
+<input type="text" id="name" placeholder="Name">
+<input type="text" id="phone" placeholder="Phone">
+<button onclick="addContact()">Add</button>
+
+<input type="text" id="searchContact" placeholder="Search"
+oninput="renderContacts()">
+
+<div id="contacts"></div>
+
+<script>
+/* 14. Contact Manager */
+
+let contacts = [];
+
+function addContact() {
+  contacts.push({
+    name: nameInput.value,
+    phone: phoneInput.value
+  });
+  renderContacts();
+}
+
+const nameInput = document.getElementById("name");
+const phoneInput = document.getElementById("phone");
+function renderContacts() {
+  const search = document
+    .getElementById("searchContact")
+    .value.toLowerCase();
+
+  let html = "";
+
+  contacts
+    .filter(c => c.name.toLowerCase().includes(search))
+    .forEach((c, index) => {
+      html += `
+        <div>
+          ${c.name} - ${c.phone}
+          <button onclick="deleteContact(${index})">Delete</button>
+        </div>`;
+    });
+
+  document.getElementById("contacts").innerHTML = html;
+}
+
+function deleteContact(index) {
+  contacts.splice(index, 1);
+  renderContacts();
+}
+</script>
+<h1>15.TASK: Product Filter System (Price + Category)</h1>
+<h2>Product Filter</h2>
+
+<select id="categoryFilter" onchange="renderProducts()">
+  <option value="">All</option>
+  <option value="Electronics">Electronics</option>
+  <option value="Clothes">Clothes</option>
+</select>
+
+<input type="number" id="maxPrice" placeholder="Max Price"
+oninput="renderProducts()">
+
+<div id="products"></div>
+
+<script>
+/* 15. Product Filter System */
+
+const products = [
+  { name: "Laptop", category: "Electronics", price: 50000 },
+  { name: "Shirt", category: "Clothes", price: 1000 },
+  { name: "Phone", category: "Electronics", price: 20000 }
+];
+function renderProducts() {
+  const category = categoryFilter.value;
+  const maxPrice = +maxPriceInput.value || Infinity;
+
+  let html = "";
+
+  products
+    .filter(p =>
+      (!category || p.category === category) &&
+      p.price <= maxPrice
+    )
+    .forEach(p => {
+      html += `<div>${p.name} - ₹${p.price}</div>`;
+    });
+
+  document.getElementById("products").innerHTML = html;
+}
+
+const categoryFilter = document.getElementById("categoryFilter");
+const maxPriceInput = document.getElementById("maxPrice");
+
+renderProducts();
+</script>
+<h1>16.TASK: Dynamic Table with Pagination + Search</h1>
+<h2>Pagination Table</h2>
+
+<input type="text" id="search1" placeholder="Search" oninput="render1()">
+
+<table>
+  <thead>
+    <tr><th>Name</th></tr>
+  </thead>
+  <tbody id="tableBody1"></tbody>
+</table>
+
+<button onclick="prev()">Prev</button>
+<button onclick="next()">Next</button>
+
+<script>
+/* 16. Pagination + Search */
+
+const data = ["Anu","Bala","Charan","Divya","Esha","Farhan","Gopi","Hari"];
+let currentPage = 1;
+const rowsPerPage = 3;
+
+function render1() {
+  const search = document.getElementById("search1").value.toLowerCase();
+  const filtered = data.filter(name => name.toLowerCase().includes(search));
+   const start = (currentPage - 1) * rowsPerPage;
+  const paginated = filtered.slice(start, start + rowsPerPage);
+
+  document.getElementById("tableBody1").innerHTML =
+    paginated.map(name => `<tr><td>${name}</td></tr>`).join("");
+}
+
+function next() { currentPage++; render1(); }
+function prev() { if(currentPage > 1) currentPage--; render1(); }
+
+render1();
+</script>
+<h1>17.TASK: Password Manager UI (Encrypted Storage)</h1>
+
+<input type="text" id="site" placeholder="Website">
+<input type="password" id="password" placeholder="Password">
+<button onclick="save()">Save</button>
+
+<div id="list"></div>
+
+<script>
+/* 17. Password Manager */
+
+let passwords = JSON.parse(localStorage.getItem("passwords")) || [];
+
+function encrypt(text) {
+  return btoa(text); // basic encoding
+}
+
+function decrypt(text) {
+  return atob(text);
+}
+
+function save() {
+  passwords.push({
+    site: siteInput.value,
+    password: encrypt(passwordInput.value)
+  });
+  localStorage.setItem("passwords", JSON.stringify(passwords));
+  render();
+}
+
+function render() {
+  document.getElementById("list").innerHTML =
+    passwords.map(p =>
+      `<div>${p.site} - ${decrypt(p.password)}</div>`
+    ).join("");
+}
+
+const siteInput = document.getElementById("site");
+const passwordInput = document.getElementById("password");
+
+render();
+</script>
+<h1>18.TASK: Bookmark Manager (Persistent Storage)</h1>
+<input type="text" id="url" placeholder="Enter URL">
+<button onclick="addBookmark()">Add</button>
+
+<div id="bookmarks"></div>
+
+<script>
+/* 18. Bookmark Manager */
+
+let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+
+function addBookmark() {
+  bookmarks.push(urlInput.value);
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  renderBookmarks();
+}
+
+function renderBookmarks() {
+  document.getElementById("bookmarks").innerHTML =
+    bookmarks.map((b,i) =>
+      `<div>
+        <a href="${b}" target="_blank">${b}</a>
+        <button onclick="deleteBookmark(${i})">Delete</button>
+      </div>`
+    ).join("");
+}
+function deleteBookmark(i) {
+  bookmarks.splice(i,1);
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  renderBookmarks();
+}
+
+const urlInput = document.getElementById("url");
+renderBookmarks();
+</script>
+<h1>19.TASK: Persistent Cart System (Save After Reload)</h1>
+<button onclick="addToCarts()">Add Item (₹100)</button>
+<h3>Total: ₹<span id="totals"></span></h3>
+
+<script>
+/* 19. Persistent Cart */
+
+let carts = JSON.parse(localStorage.getItem("carts")) || [];
+
+function addToCarts() {
+  carts.push(100);
+  localStorage.setItem("carts", JSON.stringify(carts));
+  renders();
+}
+
+function renders() {
+  const totals = carts.reduce((sum, price) => sum + price, 0);
+  document.getElementById("totals").innerText = totals;
+}
+
+renders();
+</script>
+<h1>20.TASK: Form Auto-Save Draft System</h1>
+<div id="myForm">
+<input type="text" id="names" placeholder="Name">
+<textarea id="messages" placeholder="Message"></textarea>
+<button type="submit">Submit</button>
+</div>
+<script>
+/* 20. Auto Save Draft */
+
+const nameField = document.getElementById("names");
+const messageField = document.getElementById("messages");
+
+nameField.value = localStorage.getItem("draftName") || "";
+messageField.value = localStorage.getItem("draftMessage") || "";
+
+nameField.oninput = () =>
+  localStorage.setItem("draftName", nameField.value);
+
+messageField.oninput = () =>
+  localStorage.setItem("draftMessage", messageField.value);
+
+document.getElementById("myForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent page refresh
+    this.reset();           // Clear all form fields
+});
+</script>
+<h1>21.TASK: Custom Image Carousel (Auto + Manual)</h1>
+<div class="carouselBox21">
+  <div class="slideTrack21" id="track21">
+    <img src="https://picsum.photos/300/200?1" class="slideItem21">
+    <img src="https://picsum.photos/300/200?2" class="slideItem21">
+    <img src="https://picsum.photos/300/200?3" class="slideItem21">
+  </div>
+  <button class="navBtn21 prevBtn21" onclick="goPrev21()">‹</button>
+  <button class="navBtn21 nextBtn21" onclick="goNext21()">›</button>
+</div>
+
+<script>
+/* 21. Custom Image Carousel */
+
+let slideIndex21 = 0;
+const totalSlides21 = 3;
+
+function updateCarousel21() {
+  document.getElementById("track21")
+    .style.transform = `translateX(-${slideIndex21 * 300}px)`;
+}
+
+function goNext21() {
+  slideIndex21 = (slideIndex21 + 1) % totalSlides21;
+  updateCarousel21();
+  }
+
+function goPrev21() {
+  slideIndex21 = (slideIndex21 - 1 + totalSlides21) % totalSlides21;
+  updateCarousel21();
+}
+
+setInterval(goNext21, 3000);
+</script>
+<h1>22.TASK: Scroll Progress Indicator</h1>
+<div class="progressBar22" id="scrollBar22"></div>
+<div class="contentArea22">Scroll Down</div>
+
+<script>
+/* 22. Scroll Progress */
+
+function calculateScroll22() {
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  document.getElementById("scrollBar22").style.width = progress + "%";
+}
+
+window.addEventListener("scroll", calculateScroll22);
+</script>
+<h1>23.TASK: Parallax Scrolling Landing Page</h1>
+<div class="parallaxSection23"></div>
+<div class="normalBlock23">Content Area</div>
+<div class="parallaxSection23"></div>
+<h1>24.TASK: Skill Progress Animation on Scroll</h1>
+<div class="skillWrapper24">
+  <h3>JavaScript</h3>
+  <div class="progressContainer24">
+    <div class="progressFill24" id="jsSkill24"></div>
+  </div>
+</div>
+
+<script>
+/* 24. Skill Animation */
+
+function animateSkills24() {
+  const skillBar = document.getElementById("jsSkill24");
+  const position = skillBar.getBoundingClientRect().top;
+  const screenHeight = window.innerHeight;
+
+  if (position < screenHeight) {
+    skillBar.style.width = "80%";
+  }
+}
+
+window.addEventListener("scroll", animateSkills24);
+</script>
+<h1>25.TASK: Floating Chat Widget UI</h1>
+<div class="chatToggle25" onclick="toggleChat25()">Chat</div>
+<div class="chatWindow25" id="chatBox25">
+  <h4>Support</h4>
+  <input type="text" id="chatInput25" placeholder="Type message">
+  <button onclick="sendMsg25()">Send</button>
+  <div id="chatMessages25"></div>
+</div>
+
+<script>
+/* 25. Floating Chat Widget */
+
+function toggleChat25() {
+  const chat = document.getElementById("chatBox25");
+  chat.style.display = chat.style.display === "block" ? "none" : "block";
+}
+
+function sendMsg25() {
+  const input = document.getElementById("chatInput25");
+  const msg = input.value;
+  if (!msg) return;
+
+  document.getElementById("chatMessages25").innerHTML +=
+    `<div>${msg}</div>`;
+
+  input.value = "";
+}
+</script>
+<h1>26.TASK: Typewriter Animation (Dynamic Text Array)</h1>
+<div class="typeBox26">
+  <span id="typeTarget26"></span>
+  <span class="cursorBlink26"></span>
+</div>
+
+<script>
+/* 26. Typewriter Animation */
+
+const wordsArray26 = ["Developer", "Designer", "Freelancer"];
+let wordCounter26 = 0;
+let charCounter26 = 0;
+
+function typingEffect26() {
+  const currentWord = wordsArray26[wordCounter26];
+  document.getElementById("typeTarget26").textContent =
+    currentWord.slice(0, charCounter26++);
+
+  if (charCounter26 > currentWord.length) {
+    wordCounter26 = (wordCounter26 + 1) % wordsArray26.length;
+    charCounter26 = 0;
+  }
+}
+
+setInterval(typingEffect26, 150);
+</script>
+<h1>27.TASK: Multiple Modal System</h1>
+<button onclick="openDialog27('dialogOne27')">Open Modal 1</button>
+<button onclick="openDialog27('dialogTwo27')">Open Modal 2</button>
+
+<div id="dialogOne27" class="modalLayer27">
+  <div class="modalContent27">
+    Modal One
+    <button onclick="closeDialog27('dialogOne27')">Close</button>
+  </div>
+</div>
+
+<div id="dialogTwo27" class="modalLayer27">
+  <div class="modalContent27">
+    Modal Two
+    <button onclick="closeDialog27('dialogTwo27')">Close</button>
+  </div>
+</div>
+
+<script>
+/* 27. Multiple Modal System */
+
+function openDialog27(modalId27) {
+  document.getElementById(modalId27).style.display = "block";
+}
+
+function closeDialog27(modalId27) {
+  document.getElementById(modalId27).style.display = "none";
+}
+</script>
+<h1>28.TASK: Tooltip System (Pure JavaScript)</h1>
+
+<div class="tooltipTrigger28" 
+     onmouseenter="showTip28(this)" 
+     onmouseleave="hideTip28(this)">
+  Hover me
+  <div class="tooltipBox28">Tooltip Text</div>
+</div>
+
+<script>
+/* 28. Tooltip System */
+
+function showTip28(element28) {
+  element28.querySelector(".tooltipBox28").style.display = "block";
+}
+
+function hideTip28(element28) {
+  element28.querySelector(".tooltipBox28").style.display = "none";
+}
+</script>
+<h1>29.TASK: Dynamic Accordion (Smooth Height Transition)</h1>
+<div class="accordionHeader29" onclick="toggleAccordion29(this)">
+  Section 1
+</div>
+<div class="accordionBody29">
+  <p>Accordion Content</p>
+</div>
+
+<script>
+/* 29. Accordion */
+
+function toggleAccordion29(header29) {
+  const body29 = header29.nextElementSibling;
+  if (body29.style.maxHeight) {
+    body29.style.maxHeight = null;
+  } else {
+    body29.style.maxHeight = body29.scrollHeight + "px";
+  }
+}
+</script>
+<h1>30.TASK: Page Transition Animation System</h1>
+<button onclick="switchPage30('pageA30')">Page A</button>
+<button onclick="switchPage30('pageB30')">Page B</button>
+
+<div id="pageA30" class="pageSection30 activePage30">
+  <h3>Page A Content</h3>
+</div>
+
+<div id="pageB30" class="pageSection30">
+  <h3>Page B Content</h3>
+</div>
+
+<script>
+/* 30. Page Transition */
+
+function switchPage30(targetPage30) {
+  const pages30 = document.querySelectorAll(".pageSection30");
+  pages30.forEach(pg => pg.classList.remove("activePage30"));
+  document.getElementById(targetPage30).classList.add("activePage30");
+}
+</script>
+<h1>31.TASK: Mini Weather UI (Dummy JSON Data)</h1>
+
+<div class="weatherCard31" id="weatherPanel31"></div>
+
+<script>
+/* 31. Mini Weather UI */
+
+const weatherData31 = {
+  cityName: "Chennai",
+  temperature: "32°C",
+  condition: "Sunny"
+};
+
+function renderWeather31() {
+  document.getElementById("weatherPanel31").innerHTML = `
+    <div class="weatherCity31">${weatherData31.cityName}</div>
+    <div class="weatherTemp31">${weatherData31.temperature}</div>
+    <div>${weatherData31.condition}</div>
+  `;
+}
+
+renderWeather31();
+</script>
+<h1>32.TASK: Voting System with Percentage Bars</h1>
+<div class="voteContainer32">
+  <button onclick="castVote32('Option A')">Option A</button>
+  <button onclick="castVote32('Option B')">Option B</button>
+
+  <div>Option A</div>
+  <div class="voteBar32" id="barA32"></div>
+
+  <div>Option B</div>
+  <div class="voteBar32" id="barB32"></div>
+</div>
+
+<script>
+/* 32. Voting System */
+
+let voteStore32 = { "Option A": 0, "Option B": 0 };
+
+function castVote32(choice32) {
+  voteStore32[choice32]++;
+  updateVotes32();
+}
+
+function updateVotes32() {
+  const totalVotes32 = voteStore32["Option A"] + voteStore32["Option B"];
+  if (totalVotes32 === 0) return;
+
+  document.getElementById("barA32").style.width =
+    (voteStore32["Option A"] / totalVotes32) * 100 + "%";
+      document.getElementById("barB32").style.width =
+    (voteStore32["Option B"] / totalVotes32) * 100 + "%";
+}
+</script>
+<h1>33.TASK: Quiz App (Timer + Negative Marking)</h1>
+<h3 id="quizQuestion33"></h3>
+<button onclick="submitAnswer33(true)">True</button>
+<button onclick="submitAnswer33(false)">False</button>
+<div id="quizTimer33"></div>
+<div id="quizScore33"></div>
+
+<script>
+/* 33. Quiz App */
+
+const quizData33 = {
+  question: "JavaScript is a programming language?",
+  correct: true
+};
+
+let scoreValue33 = 0;
+let timeLeft33 = 10;
+
+function startQuizTimer33() {
+  const interval33 = setInterval(() => {
+    timeLeft33--;
+    document.getElementById("quizTimer33").textContent =
+      "Time: " + timeLeft33;
+      if (timeLeft33 <= 0) {
+      clearInterval(interval33);
+      document.getElementById("quizScore33").textContent =
+        "Final Score: " + scoreValue33;
+    }
+  }, 1000);
+}
+
+function submitAnswer33(answer33) {
+  if (answer33 === quizData33.correct) {
+    scoreValue33 += 1;
+  } else {
+    scoreValue33 -= 0.5;
+  }
+  document.getElementById("quizScore33").textContent =
+    "Score: " + scoreValue33;
+}
+
+document.getElementById("quizQuestion33").textContent =
+  quizData33.question;
+
+startQuizTimer33();
+</script>
+<h1>34.TASK: Seat Booking UI</h1>
+<div class="seatGrid34" id="seatContainer34"></div>
+
+<script>
+/* 34. Seat Booking UI */
+
+function createSeats34() {
+  const container34 = document.getElementById("seatContainer34");
+  for (let i = 0; i < 20; i++) {
+    const seat34 = document.createElement("div");
+    seat34.className = "seatItem34";
+    seat34.onclick = function() {
+      seat34.classList.toggle("seatSelected34");
+    };
+    container34.appendChild(seat34);
+  }
+}
+
+createSeats34();
+</script>
+<h1>35.TASK: Calendar UI with Selectable Dates</h1>
+<div class="calendarGrid35" id="calendarWrap35"></div>
+
+<script>
+/* 35. Calendar UI */
+
+function generateCalendar35() {
+  const wrap35 = document.getElementById("calendarWrap35");
+  for (let d = 1; d <= 30; d++) {
+    const cell35 = document.createElement("div");
+    cell35.className = "calendarCell35";
+    cell35.textContent = d;
+    cell35.onclick = function() {
+      cell35.classList.toggle("calendarActive35");
+    };
+    wrap35.appendChild(cell35);
+  }
+}
+
+generateCalendar35();
+</script>
+<h1>36.TASK: Dynamic Invoice Generator (Total + Tax)</h1>
+<div class="invoiceWrapper36">
+  <input type="text" id="itemField36" placeholder="Item Name">
+  <input type="number" id="priceField36" placeholder="Price">
+  <button onclick="addLineItem36()">Add Item</button>
+
+  <div id="invoiceList36"></div>
+  <div class="invoiceSummary36" id="invoiceTotal36"></div>
+</div>
+
+<script>
+/* 36. Dynamic Invoice Generator */
+
+let invoiceData36 = [];
+
+function addLineItem36() {
+  const name36 = document.getElementById("itemField36").value;
+  const price36 = parseFloat(document.getElementById("priceField36").value);
+    if (!name36 || !price36) return;
+
+  invoiceData36.push({ name36, price36 });
+  renderInvoice36();
+}
+
+function renderInvoice36() {
+  let subtotal36 = 0;
+  const list36 = document.getElementById("invoiceList36");
+  list36.innerHTML = "";
+
+  invoiceData36.forEach(entry36 => {
+    subtotal36 += entry36.price36;
+    list36.innerHTML += `<div class="invoiceRow36">${entry36.name36} - ₹${entry36.price36}</div>`;
+  });
+
+  const tax36 = subtotal36 * 0.18;
+  const grandTotal36 = subtotal36 + tax36;
+
+  document.getElementById("invoiceTotal36").innerHTML =
+    `Subtotal: ₹${subtotal36} <br> Tax (18%): ₹${tax36.toFixed(2)} <br> Total: ₹${grandTotal36.toFixed(2)}`;
+}
+</script>
+<h1>37.TASK: Drag-and-Drop File Preview UI</h1>
+<div class="dropZone37" id="dropBox37">
+  Drop Files Here
+</div>
+
+<div class="previewArea37" id="previewContainer37"></div>
+
+<script>
+/* 37. Drag-and-Drop File Preview */
+
+const dropBox37 = document.getElementById("dropBox37");
+
+dropBox37.addEventListener("dragover", e => e.preventDefault());
+
+dropBox37.addEventListener("drop", e => {
+  e.preventDefault();
+  const files37 = e.dataTransfer.files;
+  handleFiles37(files37);
+});
+
+function handleFiles37(fileList37) {
+  const preview37 = document.getElementById("previewContainer37");
+  preview37.innerHTML = "";
+
+  Array.from(fileList37).forEach(file37 => {
+    if (file37.type.startsWith("image/")) {
+        const reader37 = new FileReader();
+      reader37.onload = e => {
+        preview37.innerHTML += `<img src="${e.target.result}">`;
+      };
+      reader37.readAsDataURL(file37);
+    }
+  });
+}
+</script>
+<h1>38.TASK: Product Comparison Feature</h1>
+<select id="compareOne38">
+  <option value="1000">Product A - ₹1000</option>
+  <option value="1500">Product B - ₹1500</option>
+</select>
+
+<select id="compareTwo38">
+  <option value="1200">Product C - ₹1200</option>
+  <option value="2000">Product D - ₹2000</option>
+</select>
+
+<button onclick="compareProducts38()">Compare</button>
+
+<div id="comparisonResult38"></div>
+
+<script>
+/* 38. Product Comparison */
+
+function compareProducts38() {
+  const p138 = parseInt(document.getElementById("compareOne38").value);
+  const p238 = parseInt(document.getElementById("compareTwo38").value);
+
+  let result38 = "";
+
+  if (p138 > p238) {
+    result38 = "First selected product is more expensive.";
+  } else if (p138 < p238) {
+    result38 = "Second selected product is more expensive.";
+  } else {
+    result38 = "Both products have the same price.";
+  }
+
+  document.getElementById("comparisonResult38").textContent = result38;
+}
+</script>
+<h1>39.TASK: Dynamic Filter System (Checkboxes + Search)</h1>
+<input type="text" id="searchBox39" placeholder="Search" oninput="applyFilter39()">
+
+<label><input type="checkbox" value="Tech" onchange="applyFilter39()"> Tech</label>
+<label><input type="checkbox" value="Clothing" onchange="applyFilter39()"> Clothing</label>
+
+<div id="filterResults39"></div>
+
+<script>
+/* 39. Dynamic Filter System */
+
+const productList39 = [
+  { name: "Laptop", category: "Tech" },
+  { name: "T-Shirt", category: "Clothing" },
+  { name: "Phone", category: "Tech" }
+];
+
+function applyFilter39() {
+  const searchTerm39 = document.getElementById("searchBox39").value.toLowerCase();
+  const checkedBoxes39 = Array.from(document.querySelectorAll("input[type=checkbox]:checked"))
+    .map(cb39 => cb39.value);
+
+  const filtered39 = productList39.filter(prod39 => {
+    const matchesSearch39 = prod39.name.toLowerCase().includes(searchTerm39);
+    const matchesCategory39 = checkedBoxes39.length === 0 || checkedBoxes39.includes(prod39.category);
+    return matchesSearch39 && matchesCategory39;
+      });
+
+  document.getElementById("filterResults39").innerHTML =
+    filtered39.map(p39 => `<div>${p39.name} - ${p39.category}</div>`).join("");
+}
+
+applyFilter39();
+</script>
+<h1>40.TASK: Step Progress Bar (Multi-Step Form)</h1>
+<ul id="progressbar">
+  <li class="active">Account</li>
+  <li>Personal</li>
+  <li>Finish</li>
+</ul>
+
+<script>
+    // Example toggle logic
+const steps = document.querySelectorAll("#progressbar li");
+const nextBtn = document.querySelector("#next");
+
+let currentStep = 0;
+
+nextBtn.addEventListener("click", () => {
+  if (currentStep < steps.length - 1) {
+    steps[currentStep + 1].classList.add("active");
+    currentStep++;
+  }
+});
+
+</script>
+<h1>41. Mini Trello-like Task Board (Edit + Delete)</h1>
+<div class="boardWrapX">
+  <div class="panelX">
+    <h3>Tasks</h3>
+    <input type="text" id="entryX">
+    <button onclick="insertX()">Add</button>
+    <div id="containerX"></div>
+  </div>
+</div>
+
+<script>
+function insertX(){
+  let val=document.getElementById("entryX").value;
+  if(!val) return;
+  let block=document.createElement("div");
+  block.className="cardX";
+  block.innerHTML=val+
+    `<span class="ctrlBtnX" onclick="modifyX(this)">✏</span>
+     <span class="ctrlBtnX" onclick="removeX(this)">❌</span>`;
+  document.getElementById("containerX").appendChild(block);
+  document.getElementById("entryX").value="";
+}
+function removeX(el){ el.parentElement.remove(); }
+function modifyX(el){
+  let text=prompt("Edit task", el.parentElement.firstChild.textContent);
+  if(text) el.parentElement.firstChild.textContent=text;
+}
+</script>
+<h1>42. Responsive Admin Dashboard (Collapsible Sidebar)</h1>
+
+<div class="layoutZ">
+  <div class="menuZ" id="sideZ">
+    <div class="triggerZ" onclick="toggleZ()">☰</div>
+    <p>Dashboard</p>
+    <p>Users</p>
+  </div>
+  <div class="mainZ">
+    <h2>Admin Panel</h2>
+  </div>
+</div>
+
+<script>
+function toggleZ(){
+  document.getElementById("sideZ").classList.toggle("hideZ");
+}
+</script>
+<h1>43. Custom Toast Notification System</h1>
+<button onclick="popY()">Show Toast</button>
+<div class="toastZoneY" id="holderY"></div>
+
+<script>
+function popY(){
+  let msg=document.createElement("div");
+  msg.className="noticeY";
+  msg.textContent="Action Successful!";
+  document.getElementById("holderY").appendChild(msg);
+  setTimeout(()=>msg.remove(),3000);
+}
+</script>
+<h1>44. Dynamic Blog UI with Category Filter</h1>
+<select onchange="filterQ(this.value)">
+  <option value="all">All</option>
+  <option value="tech">Tech</option>
+  <option value="life">Life</option>
+</select>
+
+<div class="blogWrapQ" id="areaQ"></div>
+
+<script>
+const postsQ=[
+ {title:"JS Tips", type:"tech"},
+ {title:"Healthy Habits", type:"life"},
+ {title:"CSS Tricks", type:"tech"}
+];
+
+function renderQ(cat="all"){
+  let area=document.getElementById("areaQ");
+  area.innerHTML="";
+  postsQ.filter(p=>cat==="all"||p.type===cat)
+  .forEach(p=>{
+    let div=document.createElement("div");
+    div.className="articleQ";
+    div.textContent=p.title;
+    area.appendChild(div);
+  });
+}
+function filterQ(val){ renderQ(val); }
+renderQ();
+</script>
+<h1>45. Dynamic Pricing Calculator</h1>
+
+<div class="calcWrapM">
+  <h3>Pricing</h3>
+  <select onchange="computeM()" id="planM">
+    <option value="500">Basic - ₹500</option>
+    <option value="1000">Pro - ₹1000</option>
+  </select>
+  <br><br>
+  <label><input type="checkbox" value="200" onchange="computeM()"> Extra Support (₹200)</label>
+  <br><br>
+  <h4>Total: ₹<span id="outputM">500</span></h4>
+</div>
+
+<script>
+function computeM(){
+  let base=Number(document.getElementById("planM").value);
+  let extras=document.querySelectorAll("input[type=checkbox]:checked");
+  let sum=base;
+  extras.forEach(e=>sum+=Number(e.value));
+  document.getElementById("outputM").textContent=sum;
+}
+</script>
+<h1>46. Leaderboard Ranking System (Sort by Score)</h1>
+<div class="rankWrapL">
+  <button class="sortBtnL" onclick="arrangeL()">Sort by Score</button>
+  <div id="boardL"></div>
+</div>
+
+<script>
+const playersL = [
+  {player:"Asha", points:85},
+  {player:"Kiran", points:92},
+  {player:"Ravi", points:78}
+];
+
+function displayL(){
+  let zone=document.getElementById("boardL");
+  zone.innerHTML="";
+  playersL.forEach((p,i)=>{
+    let row=document.createElement("div");
+    row.className="rankItemL";
+    row.textContent=(i+1)+". "+p.player+" - "+p.points;
+    zone.appendChild(row);
+  });
+}
+
+function arrangeL(){
+  playersL.sort((a,b)=>b.points-a.points);
+  displayL();
+}
+
+displayL();
+</script>
+</body>
+</html>
+<h1>47. Dynamic Tabs with URL Hash Support</h1>
+<div class="tabGroupT">
+  <div onclick="switchT('homeT')">Home</div>
+  <div onclick="switchT('aboutT')">About</div>
+</div>
+
+<div id="homeT" class="tabPanelT">Welcome Home</div>
+<div id="aboutT" class="tabPanelT">About Section</div>
+
+<script>
+function switchT(tabId){
+  document.querySelectorAll(".tabPanelT").forEach(el=>el.classList.remove("activeT"));
+  document.getElementById(tabId).classList.add("activeT");
+  location.hash=tabId;
+}
+
+window.addEventListener("load",()=>{
+  let hash=location.hash.replace("#","");
+  if(hash) switchT(hash);
+  else switchT("homeT");
+});
+</script>
+
+<h1>48. Poll System with localStorage</h1>
+<!-- Task 48: Poll System -->
+
+
+<div class="pollWrapV">
+  <h3>Favorite Language?</h3>
+  <button onclick="voteV('js')">JavaScript</button>
+  <button onclick="voteV('py')">Python</button>
+  <div id="resultV"></div>
+</div>
+
+<script>
+let voteDataV=JSON.parse(localStorage.getItem("votesV")) || {js:0, py:0};
+
+function voteV(choice){
+  voteDataV[choice]++;
+  localStorage.setItem("votesV",JSON.stringify(voteDataV));
+  showV();
+}
+
+function showV(){
+  let total=voteDataV.js+voteDataV.py;
+  let output=document.getElementById("resultV");
+  output.innerHTML="";
+  for(let key in voteDataV){
+    let percent=total?((voteDataV[key]/total)*100).toFixed(1):0;
+    let bar=document.createElement("div");
+    bar.className="barV";
+    bar.style.width=percent+"%";
+    bar.textContent=key+" "+percent+"%";
+    output.appendChild(bar);
+  }
+}
+
+showV();
+</script>
+<h1>49. Mini Chat UI (Front-end Simulation)</h1>
+
+<div class="chatShellC">
+  <div class="chatBoxC" id="chatAreaC"></div>
+  <input type="text" id="chatInputC">
+  <button onclick="sendC()">Send</button>
+</div>
+
+<script>
+function sendC(){
+  let text=document.getElementById("chatInputC").value;
+  if(!text) return;
+  let msg=document.createElement("div");
+  msg.className="msgC";
+  msg.textContent="You: "+text;
+  document.getElementById("chatAreaC").appendChild(msg);
+  document.getElementById("chatInputC").value="";
+}
+</script>
+
+<h1>50. Complete Portfolio Website (Interactive Sections)</h1>
+<header>
+  <nav>
+    <h2 class="logo">MyPortfolio</h2>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="section home">
+  <h1>Hello, I'm <span class="highlight">Jeyashree Arvind</span></h1>
+  <h3>I am a <span id="typing"></span></h3>
+  <button onclick="scrollToSection('projects')">View My Work</button>
+</section>
+
+<!-- About -->
+<section id="about" class="section">
+  <h2>About Me</h2>
+  <p>I am a passionate web developer skilled in creating interactive and responsive websites.</p>
+</section>
+<!-- Skills -->
+<section id="skills" class="section">
+  <h2>Skills</h2>
+
+  <div class="skill">
+    <p>HTML</p>
+    <div class="progress"><div class="progress-bar" data-width="90%"></div></div>
+  </div>
+
+  <div class="skill">
+    <p>CSS</p>
+    <div class="progress"><div class="progress-bar" data-width="85%"></div></div>
+  </div>
+
+  <div class="skill">
+    <p>JavaScript</p>
+    <div class="progress"><div class="progress-bar" data-width="80%"></div></div>
+  </div>
+
+</section>
+
+<!-- Projects -->
+<section id="projects" class="section">
+  <h2>Projects</h2>
+
+  <div class="project-container">
+     <div class="project-card">
+      <h3>Project 1</h3>
+      <p>Responsive Website</p>
+    </div>
+
+    <div class="project-card">
+      <h3>Project 2</h3>
+      <p>Shopping Cart System</p>
+    </div>
+
+    <div class="project-card">
+      <h3>Project 3</h3>
+      <p>Dashboard UI</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section">
+  <h2>Contact Me</h2>
+
+  <form id="contactForm">
+    <input type="text" id="name2" placeholder="Your Name">
+    <input type="email" id="email2" placeholder="Your Email">
+    <textarea id="message2" placeholder="Your Message"></textarea>
+    <button type="submit">Send Message</button>
+     </form>
+
+  <p id="formMessage"></p>
+</section>
+
+<script>
+// Typing Effect
+const words = ["Web Developer", "Designer", "Freelancer"];
+let i = 0;
+let j = 0;
+let currentWord = "";
+let isDeleting = false;
+const typing = document.getElementById("typing");
+
+function type() {
+  currentWord = words[i];
+  if (!isDeleting) {
+    typing.textContent = currentWord.substring(0, j++);
+    if (j > currentWord.length) {
+      isDeleting = true;
+      setTimeout(type, 1000);
+      return;
+    }
+  } else {
+    typing.textContent = currentWord.substring(0, j--);
+    if (j === 0) {
+      isDeleting = false;
+      i = (i + 1) % words.length;
+    }
+  }
+  setTimeout(type, isDeleting ? 50 : 100);
+}
+
+type();
+
+// Scroll to section
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+}
+
+// Animate skills on scroll
+window.addEventListener("scroll", () => {
+  const skillsSection = document.getElementById("skills");
+  const bars = document.querySelectorAll(".progress-bar");
+
+  if (window.scrollY >= skillsSection.offsetTop - 300) {
+    bars.forEach(bar => {
+      bar.style.width = bar.getAttribute("data-width");
+    });
+  }
+});
+
+// Form Validation
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let name = document.getElementById("name2").value.trim();
+  let email = document.getElementById("email2").value.trim();
+  let message = document.getElementById("message2").value.trim();
+  let formMessage = document.getElementById("formMessage");
+
+  if (name === "" || email === "" || message === "") {
+    formMessage.textContent = "Please fill all fields!";
+    formMessage.style.color = "red";
+  } else {
+    formMessage.textContent = "Message sent successfully!";
+    formMessage.style.color = "green";
+    this.reset();
+  }
+});
+</script>
+
+</body>
+
+</html>
